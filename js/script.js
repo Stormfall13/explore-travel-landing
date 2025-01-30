@@ -11,70 +11,46 @@ const swiper = new Swiper('.swiper', {
 });
 
 
-if(window.innerWidth > '991'){
-  
-  let currentSection = 0; // Текущая секция
-  const sections = document.querySelectorAll('section, footer, header'); // Все секции
-  const totalSections = sections.length; // Общее количество секций
-  let isScrolling = false; // Флаг для предотвращения быстрого переключения
+let currentSection = 0; 
+const sections = document.querySelectorAll('section, footer');
+const totalSections = sections.length;
+let isScrolling = false; 
 
-  // Функция для перемещения к секции
-  function scrollToSection(index) {
-    if (index < 0 || index >= totalSections) return; // Проверка границ
-    isScrolling = true; // Устанавливаем флаг
-    currentSection = index; // Обновляем текущую секцию
+// Плавный переход между секциями
+function scrollToSection(index) {
+  if (index < 0 || index >= totalSections) return;
+  isScrolling = true;
+  currentSection = index;
 
-    // Прокручиваем к секции с плавным эффектом
-    sections[index].scrollIntoView({ behavior: 'smooth' });
+  sections[index].scrollIntoView({ behavior: 'smooth' });
 
-    // Сбрасываем флаг через 1 секунду
-    setTimeout(() => (isScrolling = false), 1000);
-  }
-
-  // Обработчик события прокрутки
-  window.addEventListener('wheel', (event) => {
-    if (isScrolling) return; // Если анимация в процессе, ничего не делаем
-
-    if (event.deltaY > 0) {
-      // Прокрутка вниз
-      scrollToSection(currentSection + 1);
-    } else {
-      // Прокрутка вверх
-      scrollToSection(currentSection - 1);
-    }
-  });
-
-  // Устанавливаем начальную секцию (опционально)
-  scrollToSection(0);
-  
+  setTimeout(() => (isScrolling = false), 600);
 }
 
-const headerHeight = document.querySelector('.header').offsetHeight;
-const exploreSection = document.querySelector('.explore')
-exploreSection.style.padding = `${headerHeight} 5px 0 5px`
+// Обработчик скролла
+window.addEventListener('wheel', (event) => {
+  if (isScrolling) return;
 
-
-// Функция-обработчик появления элемента
-const animateOnScroll = (entries, observer) => {
-  entries.forEach(entry => {
-    console.log(entry)
-    
-    if (entry.isIntersecting) {
-      // Добавляем класс с анимацией
-      entry.target.classList.add('animate');
-      
-      // Если анимация однократная, прекращаем наблюдение
-      observer.unobserve(entry.target);
-    }
-  });
-};
-
-// Создаем наблюдатель
-const observer = new IntersectionObserver(animateOnScroll, {
-  threshold: 0.5 // Срабатывает, когда элемент виден на 50%
+  if (event.deltaY > 0) {
+    scrollToSection(currentSection + 1);
+  } else {
+    scrollToSection(currentSection - 1);
+  }
 });
 
+// Добавление эффекта появления блоков
+const contents = document.querySelectorAll('.explore__wrapp-main, .way__wrapp-main, .featured__wrapp-main, .guides__wrapp-main, .testimonials__wrapp-main, .trending__wrapp-main, .footer__wrapp-main');
 
-// Находим все элементы, которые нужно анимировать
-const elementsToAnimate = document.querySelectorAll('.explore, .way, .featured, .guides, .testimonials, .trending, .footer');
-elementsToAnimate.forEach(element => observer.observe(element));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // Удаляет наблюдение после появления
+    }
+  });
+}, { threshold: 0.3 });
+
+contents.forEach(content => observer.observe(content));
+
+// Устанавливаем начальную секцию
+scrollToSection(0);
