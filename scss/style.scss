@@ -166,7 +166,7 @@ p{
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: center; 
-        max-height: 634px;
+        max-height: 540px;
     }
     &__wrapp-left{
         max-width: 475px;
@@ -217,7 +217,7 @@ p{
     &__wrapp-text{
         display: flex;
         flex-direction: column;
-        gap: 71px; 
+        gap: 61px; 
         h1{
             font-family: var(--font-playfair-display);
             font-weight: var(--bold);
@@ -243,8 +243,8 @@ p{
         }
     }
     &__wrapp-right{
-        max-width: 694px;
-        max-height: 634px;
+        max-width: 540px;
+        max-height: auto;
         img{
             width: 100%;
             height: 100%;
@@ -464,7 +464,7 @@ p{
         display: flex;
         flex-direction: column;
         justify-content: center; 
-        max-height: 634px;
+        max-height: 540px;
     } 
     &__title{
         font-family: var(--font-playfair-display);
@@ -474,7 +474,7 @@ p{
         color: var(--text-color-black);
     }
     .swiper{
-        margin: 50px 0;
+        margin: 0;
         .swiper-button-next::after, .swiper-button-prev::after {
             display: none;
         } 
