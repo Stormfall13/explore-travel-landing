@@ -43,6 +43,14 @@ p {
   --black: 900;
 }
 
+.burger {
+  display: none;
+}
+
+.close {
+  display: none;
+}
+
 .header {
   width: 100%;
   min-height: 70px;
@@ -186,8 +194,8 @@ p {
 .explore__wrapp-left form {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  margin: 46px 0 0 0;
+  gap: 24px;
+  margin: 26px 0 0 0;
 }
 .explore__wrapp-left form input {
   padding: 18px 5px 18px 9px;
@@ -235,12 +243,12 @@ p {
 .explore__wrapp-text {
   display: flex;
   flex-direction: column;
-  gap: 61px;
+  gap: 30px;
 }
 .explore__wrapp-text h1 {
   font-family: var(--font-playfair-display);
   font-weight: var(--bold);
-  font-size: 64px;
+  font-size: 54px;
   color: var(--text-color-black);
 }
 .explore__wrapp-text p {
@@ -261,8 +269,8 @@ p {
   background: var(--text-color-black);
 }
 .explore__wrapp-right {
-  max-width: 540px;
-  max-height: auto;
+  max-width: 480px;
+  max-height: inherit;
 }
 .explore__wrapp-right img {
   width: 100%;
@@ -295,8 +303,8 @@ p {
   }
 }
 .way__wrapp-left {
-  max-width: 659px;
-  max-height: 534px;
+  max-width: 480px;
+  max-height: inherit;
   overflow: hidden;
 }
 .way__wrapp-left img {
@@ -490,8 +498,8 @@ p {
   color: var(--main-color);
 }
 .guides__wrapp-right {
-  max-width: 600px;
-  max-height: 542px;
+  max-width: 480px;
+  max-height: inherit;
   overflow: hidden;
 }
 .guides__wrapp-right img {
@@ -597,8 +605,8 @@ p {
   line-height: 48px;
 }
 .testimonials .swiper__wrapp-right {
-  max-width: 385px;
-  max-height: 492px;
+  max-width: 310px;
+  max-height: inherit;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -635,7 +643,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 56px 0;
+  padding: 18px 0;
 }
 .trending__wrapp-top h2 {
   font-family: var(--font-playfair-display);
@@ -661,8 +669,8 @@ p {
   gap: 20px;
 }
 .trending__img {
-  max-width: 266px;
-  max-height: 231px;
+  max-width: 315px;
+  max-height: 170px;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
 }
@@ -673,7 +681,7 @@ p {
      object-fit: contain;
 }
 .trending__wrapper {
-  max-width: 266px;
+  max-width: 315px;
 }
 .trending__wrapper h2 {
   font-family: var(--font-inter);
@@ -806,5 +814,223 @@ p {
   .explore__wrapp-main.visible {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@media (max-width: 991px) {
+  .burger {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--main-color);
+    border-radius: 8px;
+  }
+  .close {
+    display: block;
+  }
+  .header__main-wrapp {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .header .header__wrapp {
+    max-width: 233px;
+  }
+  .header .header__wrapp .btn__wrapp {
+    max-width: 233px;
+    gap: 10px;
+    justify-content: normal;
+  }
+  .header .header__wrapp .login__btn {
+    padding: 6px 33px !important;
+  }
+  .header .header__wrapp .register__btn {
+    padding: 6px 25px !important;
+  }
+  .header .header__wrapp .main__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 100%;
+    height: 102vh;
+    background: rgba(251, 143, 29, 0.87);
+    transform: translate(100%);
+    transition: 0.6s;
+  }
+  .header .header__wrapp .main__menu .close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--main-color);
+    border-radius: 8px;
+  }
+  .header .header__wrapp .main__menu ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+  .header .header__wrapp .main__menu ul a {
+    color: var(--text-color-white);
+  }
+  .way__wrapp-main,
+  .featured__wrapp-main,
+  .guides__wrapp-main,
+  .testimonials__wrapp-main,
+  .trending__wrapp-main,
+  .footer__wrapp-main,
+  .explore__wrapp-main {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  }
+  .explore,
+  .way,
+  .featured,
+  .guides,
+  .testimonials,
+  .trending,
+  .footer {
+    height: auto;
+    padding: 25px 0;
+  }
+  .testimonials {
+    display: none;
+  }
+  .explore {
+    height: auto;
+  }
+  .explore__wrapp-left {
+    max-width: inherit;
+  }
+  .explore__wrapp-right {
+    display: none;
+  }
+  .way__wrapp-left {
+    display: none;
+  }
+  .way__wrapp-right {
+    max-width: inherit;
+  }
+  .featured__img {
+    max-width: 208px;
+  }
+  .guides__wrapp-left {
+    max-width: inherit;
+  }
+  .guides__wrapp-right {
+    display: none;
+  }
+  .trending__wrapp-bottom {
+    gap: 10px;
+  }
+  .trending__wrapper {
+    max-width: 230px;
+  }
+  .trending__wrapper h2 {
+    font-size: 16px;
+    line-height: 23px;
+    margin: 6px 0;
+  }
+  .trending__wrapper p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .trending__wrapper a {
+    margin: 6px 0 0 0;
+  }
+  .footer__menu {
+    display: none;
+  }
+  .footer__wrapp-main {
+    width: 100%;
+  }
+  .footer__left-content {
+    max-width: inherit;
+  }
+}
+@media (max-width: 489px) {
+  .explore__wrapp-text h1 {
+    font-size: 27px;
+  }
+  .explore__wrapp-text p {
+    font-size: 16px;
+    padding: 0;
+  }
+  .explore__wrapp-text p::after {
+    display: none;
+  }
+  .explore__wrapp-left form input {
+    padding: 10px 3px 10px 5px;
+  }
+  .explore__wrapp-left form .date {
+    padding: 9px 54px 9px 31px;
+  }
+  .way__wrapp-right h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .way__wrapp-right p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .featured__wrapp {
+    gap: 15px;
+  }
+  .featured__top {
+    margin: 10px 0;
+  }
+  .featured__top h2 {
+    font-size: 25px;
+  }
+  .featured__top a {
+    font-size: 15x;
+  }
+  .featured .featured__img {
+    max-width: 154px;
+  }
+  .guides__wrapp-left h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .guides__wrapp-left p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .trending__wrapp-main {
+    max-height: inherit;
+  }
+  .trending__wrapp-top h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .trending__wrapp-top a {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .trending__wrapper {
+    max-width: 160px;
+  }
+  .trending__wrapper h2 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .trending__wrapper p {
+    line-height: 16px;
+  }
+  .trending__wrapper a {
+    line-height: 17px;
+  }
+  .footer__wrapp-top {
+    width: auto;
   }
 }/*# sourceMappingURL=style.css.map */
